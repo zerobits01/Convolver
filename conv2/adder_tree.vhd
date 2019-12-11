@@ -7,11 +7,11 @@ entity adder_tree5 is
 	Port(
 		-- a matrix made of outputs of HMMs 
 		in_1 : in int_mat := (
-			(others => 0),
-			(others => 0),
-			(others => 0),
-			(others => 0),
 			(1,1,1,1,1,others => 0),
+			(others => 0),
+			(others => 0),
+			(others => 0),
+			(others => 0),
 			others => (others => 0)
 		);
 		out_1 : out integer
@@ -28,41 +28,24 @@ architecture Behavioral5 of adder_tree5 is
 		);
 	end component adder_levels;
 	signal t1,t2,t3,t4,t5,t6 : int_arr;
-	signal counter : integer := 0;
+--	signal counter : integer := 0;
 begin
 	gen0 : for i in 0 to 6 generate
 		inner0:if i = 0 generate 
---			gen : for j in 0 to 4 generate
---				inner_gen : for k in 0 to 4 generate
---					t1(counter) <= in_1(j)(k);
+			gen : for j in 4*i to 4*i+4 generate
+				inner_gen : for k in 0 to 4 generate
+					t1(j+i) <= in_1(j)(k);
 --					counter <= counter+1;
---				end generate;
---			end generate;
-			t1(0) <= in_1(0)(0);
-			t1(1) <= in_1(0)(1);
-			t1(2) <= in_1(0)(2);
-			t1(3) <= in_1(0)(3);
-			t1(4) <= in_1(0)(4);
-			t1(5) <= in_1(1)(0);
-			t1(6) <= in_1(1)(1);
-			t1(7) <= in_1(1)(2);
-			t1(8) <= in_1(1)(3);
-			t1(9) <= in_1(1)(4);
-			t1(10) <= in_1(2)(0);
-			t1(11) <= in_1(2)(1);
-			t1(12) <= in_1(2)(2);
-			t1(13) <= in_1(2)(3);
-			t1(14) <= in_1(2)(4);
-			t1(15) <= in_1(3)(0);
-			t1(16) <= in_1(3)(1);
-			t1(17) <= in_1(3)(2);
-			t1(18) <= in_1(3)(3);
-			t1(19) <= in_1(3)(4);
-			t1(20) <= in_1(4)(0);
-			t1(21) <= in_1(4)(1);
-			t1(22) <= in_1(4)(2);
-			t1(23) <= in_1(4)(3);
-			t1(24) <= in_1(4)(4);
+				end generate;
+			end generate;
+	-- the problem is delay of the nested for 
+--			t1(0) <= (in_1(0)(0),in_1(0)(1),in_1(0)(2),in_1(0)(3),
+--				in_1(0)(4),in_1(1)(0),in_1(1)(1),in_1(1)(2),
+--				in_1(1)(3),in_1(1)(4),in_1(2)(0),in_1(2)(1),
+--				in_1(2)(2),in_1(2)(3),in_1(2)(4),in_1(3)(0),
+--				in_1(3)(1),in_1(3)(2),in_1(3)(3),in_1(3)(4),
+--				in_1(4)(0),in_1(4)(1),in_1(4)(2),in_1(4)(3),
+--			in_1(4)(4));
 		end generate inner0;
 		
 		inner1:if i = 1 generate
