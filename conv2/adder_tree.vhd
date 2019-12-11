@@ -7,10 +7,10 @@ entity adder_tree5 is
 	Port(
 		-- a matrix made of outputs of HMMs 
 		in_1 : in int_mat := (
-			(0,0,0,0,0,others => 0),
-			(0,0,0,0,0,others => 0),
-			(0,0,0,0,0,others => 0),
-			(0,0,0,0,0,others => 0),
+			(others => 0),
+			(others => 0),
+			(others => 0),
+			(others => 0),
 			(1,1,1,1,1,others => 0),
 			others => (others => 0)
 		);
@@ -31,14 +31,38 @@ architecture Behavioral5 of adder_tree5 is
 	signal counter : integer := 0;
 begin
 	gen0 : for i in 0 to 6 generate
-		
 		inner0:if i = 0 generate 
-			gen : for i in 0 to 4 generate
-				inner_gen : for j in 0 to 4 generate
-					t1(counter) <= in_1(i)(j);
-					counter <= counter+1;
-				end generate;
-			end generate;
+--			gen : for j in 0 to 4 generate
+--				inner_gen : for k in 0 to 4 generate
+--					t1(counter) <= in_1(j)(k);
+--					counter <= counter+1;
+--				end generate;
+--			end generate;
+			t1(0) <= in_1(0)(0);
+			t1(1) <= in_1(0)(1);
+			t1(2) <= in_1(0)(2);
+			t1(3) <= in_1(0)(3);
+			t1(4) <= in_1(0)(4);
+			t1(5) <= in_1(1)(0);
+			t1(6) <= in_1(1)(1);
+			t1(7) <= in_1(1)(2);
+			t1(8) <= in_1(1)(3);
+			t1(9) <= in_1(1)(4);
+			t1(10) <= in_1(2)(0);
+			t1(11) <= in_1(2)(1);
+			t1(12) <= in_1(2)(2);
+			t1(13) <= in_1(2)(3);
+			t1(14) <= in_1(2)(4);
+			t1(15) <= in_1(3)(0);
+			t1(16) <= in_1(3)(1);
+			t1(17) <= in_1(3)(2);
+			t1(18) <= in_1(3)(3);
+			t1(19) <= in_1(3)(4);
+			t1(20) <= in_1(4)(0);
+			t1(21) <= in_1(4)(1);
+			t1(22) <= in_1(4)(2);
+			t1(23) <= in_1(4)(3);
+			t1(24) <= in_1(4)(4);
 		end generate inner0;
 		
 		inner1:if i = 1 generate

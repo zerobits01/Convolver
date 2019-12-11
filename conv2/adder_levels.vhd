@@ -22,11 +22,12 @@ architecture Behavioral of adder_levels is
 			out_1: out integer
 		);
 	end component adder_2_to_1;
-
+ 
 begin	
 	gen : for i in 0 to N generate
 		inner_if : if (i mod 2 = 1) generate
 			l1 : adder_2_to_1 Port Map(in_1 => in_1(i), in_2 => in_1(i-1),out_1 => out_1(((i-1)/2)));
+--			out_1(((i-1)/2)) <= in_1(i) + in_1(i-1);
 		end generate;
 	end generate;
 	out_1((N+1)/2) <= in_1(N) when N mod 2 = 0;
