@@ -32,13 +32,6 @@ architecture Behavioral5 of adder_tree5 is
 begin
 	gen0 : for i in 0 to 6 generate
 		inner0:if i = 0 generate 
---			gen : for j in 4*i to 4*i+4 generate
---				inner_gen : for k in 0 to 4 generate
---					t1(j+i) <= in_1(j)(k);
-----					counter <= counter+1;
---				end generate;
---			end generate;
-
 			t1(0 to 4) <= in_1(0)(0 to 4);
 			t1(5 to 9) <= in_1(1)(0 to 4);
 			t1(10 to 14) <= in_1(2)(0 to 4);

@@ -1,5 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+library work;
+use work.arr_mat.all;
 
 entity HMM5 is
 	generic(N : Integer := 4);
