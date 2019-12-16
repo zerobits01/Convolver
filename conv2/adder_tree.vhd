@@ -32,20 +32,19 @@ architecture Behavioral5 of adder_tree5 is
 begin
 	gen0 : for i in 0 to 6 generate
 		inner0:if i = 0 generate 
-			gen : for j in 4*i to 4*i+4 generate
-				inner_gen : for k in 0 to 4 generate
-					t1(j+i) <= in_1(j)(k);
---					counter <= counter+1;
-				end generate;
-			end generate;
-	-- the problem is delay of the nested for 
---			t1(0) <= (in_1(0)(0),in_1(0)(1),in_1(0)(2),in_1(0)(3),
---				in_1(0)(4),in_1(1)(0),in_1(1)(1),in_1(1)(2),
---				in_1(1)(3),in_1(1)(4),in_1(2)(0),in_1(2)(1),
---				in_1(2)(2),in_1(2)(3),in_1(2)(4),in_1(3)(0),
---				in_1(3)(1),in_1(3)(2),in_1(3)(3),in_1(3)(4),
---				in_1(4)(0),in_1(4)(1),in_1(4)(2),in_1(4)(3),
---			in_1(4)(4));
+--			gen : for j in 4*i to 4*i+4 generate
+--				inner_gen : for k in 0 to 4 generate
+--					t1(j+i) <= in_1(j)(k);
+----					counter <= counter+1;
+--				end generate;
+--			end generate;
+
+			t1(0 to 4) <= in_1(0)(0 to 4);
+			t1(5 to 9) <= in_1(1)(0 to 4);
+			t1(10 to 14) <= in_1(2)(0 to 4);
+			t1(15 to 19) <= in_1(3)(0 to 4);
+			t1(20 to 24) <= in_1(4)(0 to 4);
+			
 		end generate inner0;
 		
 		inner1:if i = 1 generate
