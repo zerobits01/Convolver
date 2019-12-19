@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 library work;
 use work.arr_mat.all;
 
-entity non_pipeline_convolver is
+entity non_pipeline_convolver5 is
 	port(
 		input_mat : in int_mat := (
 				(1,1,1,1,1,others => 0),
@@ -23,9 +23,9 @@ entity non_pipeline_convolver is
 			);
 		out_1 : out integer
 	);
-end non_pipeline_convolver;
+end non_pipeline_convolver5;
 
-architecture Behavioral of non_pipeline_convolver is
+architecture Behavioral of non_pipeline_convolver5 is
 	component adder_tree5 is
 		Port(
 			in_1 : in int_mat;  -- := (

@@ -1,16 +1,16 @@
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 library work;
 use work.arr_mat.all;
- 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY PAM5_TB IS
-END PAM5_TB;
+ENTITY PAM5_TB_1 IS
+END PAM5_TB_1;
  
-ARCHITECTURE behavior OF PAM5_TB IS 
+ARCHITECTURE behavior OF PAM5_TB_1 IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -19,8 +19,8 @@ ARCHITECTURE behavior OF PAM5_TB IS
          in_1 : IN  int_arr;
          in_2 : IN  int_arr;
          clk : IN  Bit;
-         out_1 : OUT  Integer;
-			temp : out integer
+         out_1 : OUT  integer;
+         temp : OUT  integer
         );
     END COMPONENT;
     
@@ -32,11 +32,10 @@ ARCHITECTURE behavior OF PAM5_TB IS
 
  	--Outputs
    signal out_1 : integer;
-	signal temp : integer;
-
+   signal temp : integer;
 
    -- Clock period definitions
-   constant clk_period : time := 5 ns;
+   constant clk_period : time := 10 ns;
  
 BEGIN
  
@@ -46,7 +45,7 @@ BEGIN
           in_2 => in_2,
           clk => clk,
           out_1 => out_1,
-			 temp => temp
+          temp => temp
         );
 
    -- Clock process definitions
