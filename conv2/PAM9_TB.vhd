@@ -2,15 +2,18 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 library work;
 use work.arr_mat.all;
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
  
-ENTITY PAM_TOP_TB IS
-END PAM_TOP_TB;
+ENTITY PAM9_TB IS
+END PAM9_TB;
  
-ARCHITECTURE behavior OF PAM_TOP_TB IS 
+ARCHITECTURE behavior OF PAM9_TB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT PAM_TOP
+    COMPONENT PAM9_TOP
     PORT(
          in_1 : IN  int_mat;
          in_2 : IN  int_mat;
@@ -22,16 +25,30 @@ ARCHITECTURE behavior OF PAM_TOP_TB IS
 
    --Inputs
    signal in_1 : int_mat := (
-				(1,1,1,others => 0),
-				(2,2,3,others => 0),
+				(1,1,1,1,1,1,others => 0),
+				(2,2,3,1,1,1,others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(2,2,3,1,1,1,others => 0),
+				others => (others => 0)
+	);
+   signal in_2 : int_mat := (
+				(1,1,1,1,1,1,others => 0),
+				(2,2,3,1,1,1,others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(others => 0),
+				(2,2,3,1,1,1,others => 0),
 				others => (others => 0)
 			);
-   signal in_2 : int_mat:= (
-				(1,1,1,others => 0),
-				(2,2,3,others => 0),
-				others => (others => 0)
-			);
-   signal clk : Bit := '0';
+   signal clk  : Bit := '0';
 
  	--Outputs
    signal out_1 : integer;
@@ -42,7 +59,7 @@ ARCHITECTURE behavior OF PAM_TOP_TB IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: PAM_TOP PORT MAP (
+   uut: PAM9_TOP PORT MAP (
           in_1 => in_1,
           in_2 => in_2,
           clk => clk,
