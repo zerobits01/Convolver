@@ -8,11 +8,12 @@ entity Clock_Pulse_Changer is
 			second_step : integer := 40;
 			third_step : integer := 50;
 			fourth_step : integer := 20
+--			20MHz is 2ns change the numbrs below
 --			For Part B we can use the below steps instead uppers
---			first_step : integer := 15;
---			second_step : integer := 20;
---			third_step : integer := 25;
---			fourth_step : integer := 10
+--			first_step : integer := 150;
+--			second_step : integer := 200;
+--			third_step : integer := 250;
+--			fourth_step : integer := 100
 	);
 	Port(
 		clk : In Bit;

@@ -53,33 +53,22 @@ BEGIN
 		wait for clk_period/2;
 				case test is
 			when 0 => 
-				if 4 < 5 then
 				   data_to_write <= (others => '1');
 					addr <= 0;
 					write_ena <= '1';
 					to_do <= 2;
-				end if;
 			when 1 => 
-				if 4 < 5 then
 				   addr <= 0;
 					to_do <= 1;
-				end if;
 			when 2 => 
-				if 4 < 5 then
 				   to_do <= 3;
-				end if;
 			when 3 => 
-				if 4 < 5 then
 					data_to_write <= (others => '1');
 					addr <= 1;
 					write_ena <= '1';
 					to_do <= 2;
-				end if;
-			when 4 => 
-				if 4 < 5 then
+			when 4 =>
 				   to_do <= 4;
-				end if;
-				
 			when others => test := 0;
 		end case;
 		test := test + 1;
