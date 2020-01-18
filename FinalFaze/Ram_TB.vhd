@@ -11,9 +11,9 @@ ARCHITECTURE behavior OF Ram_TB IS
     COMPONENT Ram_1KB
     PORT(
          data_to_write : IN  std_logic_vector(0 to 7);
-         addr : IN  integer;
+         addr : IN  integer range 0 to 1023;
          write_ena : IN  std_logic;
-         to_do : IN  integer;
+         to_do : IN  positive;
          clk : IN  std_logic;
          read_out : OUT  std_logic_vector(0 to 7)
         );
@@ -22,7 +22,7 @@ ARCHITECTURE behavior OF Ram_TB IS
 
    --Inputs
    signal data_to_write : std_logic_vector(0 to 7) := (others => '0');
-   signal addr : integer ;
+   signal addr : integer range 0 to 1023 ;
    signal write_ena : std_logic := '0';
    signal to_do : integer := 0;
    signal clk : std_logic := '0';
@@ -51,31 +51,36 @@ BEGIN
 	begin
 		clk <= '0';
 		wait for clk_period/2;
-				case test is
-			when 0 => 
-				   data_to_write <= (others => '1');
-					addr <= 0;
-					write_ena <= '1';
-					to_do <= 2;
-			when 1 => 
-				   addr <= 0;
-					to_do <= 1;
-			when 2 => 
-				   to_do <= 3;
-			when 3 => 
-					data_to_write <= (others => '1');
-					addr <= 1;
-					write_ena <= '1';
-					to_do <= 2;
-			when 4 =>
-				   to_do <= 4;
-			when others => test := 0;
+		case test is
+--			when 1 => 
+--				addr <= 0;
+--				to_do <= 1;
+--			when 2 => 
+--				addr <= 1;
+--				to_do <= 1;
+--			when 3 => 
+--				addr <= 2;
+--				to_do <= 1;
+--			when 4 => 
+--				addr <= 2;
+--				data_to_write <= "11111111";
+--				write_ena <= '1';
+--				to_do <= 2;
+--			when 5 => 
+--				addr <= 2;
+--				to_do <= 1;					
+			when 6 => 
+				 to_do <= 4; 
+			
+			when 7001 => 
+				addr <= 0;
+				to_do <= 1;		
+
+			when others => Null; 
 		end case;
 		test := test + 1;
-
 		clk <= '1';
-
 		wait for clk_period/2;
-   end process;
+	end process;
 
 END;
